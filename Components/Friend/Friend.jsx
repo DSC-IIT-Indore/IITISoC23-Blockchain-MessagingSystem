@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
 
-//INTERNAL IMPORT
 import Style from "./Friend.module.css";
-import images from "../../images";
+import images from "../../assets";
+import Card from "./Card/Card";
 import Chat from "./Chat/Chat";
 import { ChatAppContect } from "../../Context/ChatAppContext";
 
