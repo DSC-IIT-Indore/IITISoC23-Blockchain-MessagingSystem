@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
 
-//INTERNAL IMPORT
 import Style from "./Model.module.css";
-import images from "../../images";
+import assets from "../../assets";
 import { ChatAppContect } from "../../Context/ChatAppContext";
+import { Loader } from "../../Components/index";
 
 const Model = ({
   openBox,
@@ -16,10 +16,11 @@ const Model = ({
   image,
   functionName,
 }) => {
-  //USESTATE
+  
   const [name, setName] = useState("");
   const [userAddress, setUserAddress] = useState(address);
 
+  const { loading } = useContext(ChatAppContect);
   return (
     <div className={Style.Model}>
       <div className={Style.Model_box}>
@@ -29,10 +30,13 @@ const Model = ({
           </h1>
           <p>{info}</p>
           <small>{smallInfo}</small>
+          {loading == true ? (
+            <Loader />
+          ) : (
             <div className={Style.Model_box_left_name}>
               <div className={Style.Model_box_left_name_info}>
                 <Image
-                  src={images.username}
+                  src={assets.username}
                   alt="User"
                   width={30}
                   height={30}
@@ -44,10 +48,10 @@ const Model = ({
                 />
               </div>
               <div className={Style.Model_box_left_name_info}>
-                <Image src={images.account} alt="user" width={30} height={30}/>
+                <Image src={assets.account} alt="user" width={30} height={30}/>
                 <input
                   type="text"
-                  placeholder={"Enter Metamask Address"}
+                  placeholder={address || "Enter Metamask Address"}
                   onChange={(e) => setUserAddress(e.target.value)}
                 />
               </div>
@@ -55,7 +59,7 @@ const Model = ({
                 <div className={Style.submit}>
                 <button onClick={() => functionName({ name, userAddress })}>
                   {""}
-                  <Image src={images.send} alt="Send" width={35} height={35} />
+                  <Image src={assets.send} alt="Send" width={35} height={35} />
                   {""}
                   SUBMIT
                 </button>
@@ -63,14 +67,14 @@ const Model = ({
                 <div className={Style.cancel}>
                 <button onClick={() => openBox(false)}>
                   {""}
-                  <Image src={images.close} alt="Cancel" width={35} height={35} />
+                  <Image src={assets.close} alt="Cancel" width={35} height={35} />
                   {""}
                   CANCEL
                 </button>
                 </div>
               </div>
             </div>
-
+          )}
         </div>
         <div className={Style.Model_box_right}>
           <Image src={image} alt="buddy" width={850} height={850} />
