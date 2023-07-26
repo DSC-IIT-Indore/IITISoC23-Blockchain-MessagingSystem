@@ -2,29 +2,31 @@ import React, { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-//INTERNAL IMPORT
 import Style from "./NavBar.module.css";
 import { ChatAppContect } from "../../Context/ChatAppContext";
 import { Model, Error } from "../index";
-import images from "../../images";
+import images from "../../assets";
 
 const NavBar = () => {
   const menuItems = [
     {
-      menu: "CHAT |",
+      menu: "ALL USERS  |",
+      link: "alluser",
+    },
+    {
+      menu: "CHAT  |",
       link: "/",
     },
     {
-      menu: "CONTACT US|",
+      menu: "CONTACT  |",
       link: "/",
     },
     {
-      menu: "SETTINGS |",
+      menu: "SETTINGS  |",
       link: "/",
     },
   ];
 
-  //USESTATE
   const [active, setActive] = useState(2);
   const [open, setOpen] = useState(false);
   const [openModel, setOpenModel] = useState(false);
@@ -107,10 +109,8 @@ const NavBar = () => {
                 <small>{userName || "Create Account"}</small>
               </button>
             )}
-            <div className={Style.Logout}>
-              <p>LOGOUT</p>
-            </div>
           </div>
+
           <div
             className={Style.NavBar_box_right_open}
             onClick={() => setOpen(true)}
@@ -127,14 +127,15 @@ const NavBar = () => {
             openBox={setOpenModel}
             title="WELCOME TO"
             head="CHAT BLOCKS"
-            info="Decentralised Conversations: Chat Smarter, Chat Safer, CHAT BLOCKS"
-            smallInfo="Login with name and Metamask Account address"
+            info="Decentralised Conversations : Chat Smarter, Chat Safer, CHAT BLOCKS"
+            smallInfo="Login with Name and Metamask address"
             image={images.hero}
             functionName={createAccount}
             address={account}
           />
         </div>
       )}
+      {error == "" ? "" : <Error error={error} />}
     </div>
   );
 };
