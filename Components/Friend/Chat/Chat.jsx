@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-//INTERNAL IMPORT
 import Style from "./Chat.module.css";
-import images from "../../../images";
+import images from "../../../assets";
 import { converTime } from "../../../Utils/apiFeature";
+import { Loader } from "../../index";
 
 const Chat = ({
   functionName,
@@ -18,6 +18,7 @@ const Chat = ({
   currentUserAddress,
   readUser,
 }) => {
+  //USTE STATE
   const [message, setMessage] = useState("");
   const [chatData, setChatData] = useState({
     name: "",
@@ -38,6 +39,7 @@ const Chat = ({
     }
   }, []);
 
+  // console.log(chatData.address, chatData.name);
   return (
     <div className={Style.Chat}>
       {currentUserName && currentUserAddress ? (
@@ -62,8 +64,8 @@ const Chat = ({
                     <Image
                       src={images.accountName}
                       alt="image"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     />
                     <span>
                       {chatData.name} {""}
@@ -75,8 +77,8 @@ const Chat = ({
                     <Image
                       src={images.accountName}
                       alt="image"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     />
                     <span>
                       {userName} {""}
@@ -100,7 +102,7 @@ const Chat = ({
               <Image src={images.smile} alt="smile" width={50} height={50} />
               <input
                 type="text"
-                placeholder="Type your message"
+                placeholder="type your message"
                 onChange={(e) => setMessage(e.target.value)}
               />
               <Image src={images.file} alt="file" width={50} height={50} />
