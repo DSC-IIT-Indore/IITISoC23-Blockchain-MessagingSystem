@@ -1,28 +1,39 @@
-Team details-
-1) Darshil Patel
-2) Satvik Desai
-3) Arunbha Dhal
-4) Debasish Padhy
-5) Swaraj Khair
+# ChatApp Solidity Smart Contract
 
-Mentor details-
-1) Krish Agrawal
-2) Sujal Mishra
+## Overview
+This project implements a decentralized chat application on the Ethereum blockchain using Solidity. Users can create accounts, add friends, send messages, and read messages securely on the blockchain.
 
-This is a blockchain messaging system that acts as a decentralized communication platform built on the principles of blockchain technology.
-
-To install the dependencies required to deploy this app, you need to install the following packages in 'package.json' by typing the following in the terminal:
-  "npm i ethers@5.7.2 next@12.3.1 react@18.2.0 react-dom@18.2.0 web3modal@1.9.9 hardhat@2.12.0"
+## Features
+- **Account Management:**
+  - Users can create accounts with unique usernames.
+  - Each user is represented by their Ethereum address.
   
-To run the system, follow the undergiven steps:
-  1)type "npx hardhat node" in terminal
-  2)Simultaneoulsy split the terminal and type "npx hardhat run scripts/deploy.js --network localhost" in the other terminal
-  3)Move ChatApp.json from 'artifacts/contracts' to 'context'
-  3)Type "npm run dev"
+- **Friend Management:**
+  - Users can add friends using their Ethereum addresses.
+  - Mutual friendships are automatically established.
 
-To add the local hardhat network to the Metamask Wallet, register the following:
-  Network Name- localhost
-  New RPC URL - "http://127.0.0.1:8545"
-  Chain ID - "1337"
-  Currency Symbol - "ETH"
-  
+- **Messaging System:**
+  - Users can send messages to their friends.
+  - Messages are stored securely on the blockchain.
+
+- **User Interaction:**
+  - Check if a user exists.
+  - Retrieve usernames of registered users.
+  - View and manage friends list.
+  - Send and read messages with friends.
+
+
+
+## Usage
+1. Deploy the `ChatApp` contract on an Ethereum-compatible blockchain using Solidity compiler and deployer.
+2. Interact with the contract methods using a web3.js or ethers.js client-side application.
+3. Ensure proper gas management and security practices when interacting with the Ethereum blockchain.
+
+1. Compile contracts and deploy using Hardhat:
+   ```bash
+   npx hardhat compile
+   npx hardhat run scripts/deploy.js --network localhost
+   ```
+2. Run the application:
+   ```bash
+   npx run dev
